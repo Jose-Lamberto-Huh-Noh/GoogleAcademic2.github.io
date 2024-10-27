@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía de Investigación Asistida por IA para Google Academic.">
+    <title>Guía de Investigación Asistida por IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Barra de navegación */
+        .nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .nav .active {
+            background-color: #4285f4;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #4285f4;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        /* Formulario */
+        .formulario {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="file"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #357ae8;
+        }
+
+        .resultados {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            background-color: #e8f5e9;
+        }
+
+        .mapa-conceptual, .mapa-mental {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mapa-conceptual div, .mapa-mental div {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #000;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+        }
+
+        /* Estilo del botón hamburguesa */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .nav {
+                transform: translateX(-250px); /* Oculta la barra */
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block; /* Muestra el botón de 3 líneas en dispositivos móviles */
+            }
+
+            .nav.active {
+                transform: translateX(0); /* Muestra la barra al hacer clic */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú hamburguesa -->
+    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+    <!-- Barra de navegación -->
+    <div class="nav" id="nav">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="index.html">Google Academic</a>
+        <a href="Miperfil.html">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="Alertas.html">Alertas</a>
+        <a href="Estadisticas.html">Estadísticas</a>
+        <a href="busqueda.html">Búsqueda avanzada</a>
+        <a href="configuracion.html">Configuración</a>
+        <a href="guiaIA.html" class="active">Ayuda IA</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <h1>Guía de Investigación Asistida por IA</h1>
+
+        <form id="researchForm" class="formulario">
+            <!-- Entrada para subir archivo -->
+            <label for="archivo">Subir archivo PDF:</label>
+            <input type="file" id="archivo" name="archivo" accept=".pdf">
+
+            <!-- Entrada para un enlace -->
+            <label for="enlace">O ingresa un enlace:</label>
+            <input type="text" id="enlace" name="enlace" placeholder="https://ejemplo.com/documento.pdf">
+            
+            <!-- Opciones de análisis -->
+            <label for="opciones">¿Qué te gustaría generar?</label>
+            <select id="opciones" name="opciones">
+                <option value="resumen">Generar Resumen</option>
+                <option value="mapa-conceptual">Crear Mapa Conceptual</option>
+                <option value="mapa-mental">Crear Mapa Mental</option>
+                <option value="otros">Otras representaciones</option>
+            </select>
+
+            <button type="button" onclick="procesar()">Generar</button>
+        </form>
+
+        <div id="resultados" class="resultados" style="display: none;">
+            <h3>Resultados:</h3>
+            <p id="contenido"></p>
+        </div>
+
+        <section id="mapa-conceptual" class="mapa-conceptual" style="display: none;">
+            <h2>Mapa Conceptual</h2>
+            <div>Concepto 1</div>
+            <div>Concepto 2</div>
+            <div>Concepto 3</div>
+        </section>
+
+        <section id="mapa-mental" class="mapa-mental" style="display: none;">
+            <h2>Mapa Mental</h2>
+            <div>Idea Principal</div>
+            <div>Idea Relacionada 1</div>
+            <div>Idea Relacionada 2</div>
+        </section>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar la barra de navegación en móvil
+        function toggleNav() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Cierra la barra de navegación si el usuario hace clic fuera de ella
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Función para procesar el archivo o enlace
+        function procesar() {
+            let enlace = document.getElementById('enlace').value;
+            let opcion = document.getElementById('opciones').value;
+            let contenido = '';
+
+            
+
+            // Simulando el procesamiento del enlace
+            if (opcion === 'resumen') {
+                contenido = `<strong>Resumen del documento:</strong><br>
+                            Se ha generado un resumen del contenido analizado. El texto proporciona una visión general sobre el tema del documento, destacando los puntos clave y las conclusiones más importantes.`;
+            } else if (opcion === 'mapa-conceptual') {
+                contenido = 'Mapa conceptual generado a partir del documento proporcionado.';
+                document.getElementById('mapa-conceptual').style.display = 'block';
+            } else if (opcion === 'mapa-mental') {
+                contenido = 'Mapa mental generado a partir del documento proporcionado.';
+                document.getElementById('mapa-mental').style.display = 'block';
+            } else {
+                contenido = 'Otra representación generada a partir del documento.';
+            }
+
+            // Mostrar resultados
+            document.getElementById('resultados').style.display = 'block';
+            document.getElementById('contenido').innerHTML = contenido;
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estadísticas de Google Academic.">
+    <title>Estadísticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Barra de navegación */
+        .nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .nav .active {
+            background-color: #4285f4;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .stats-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4285f4;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .stat-title {
+            font-weight: bold;
+        }
+
+        /* Gráficos */
+        .chart {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0; /* Placeholder para el gráfico */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .no-data {
+            color: #777;
+            font-size: 16px;
+        }
+
+        /* Estilo del botón hamburguesa */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .nav {
+                transform: translateX(-250px); /* Oculta la barra */
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block; /* Muestra el botón de 3 líneas en dispositivos móviles */
+            }
+
+            .nav.active {
+                transform: translateX(0); /* Muestra la barra al hacer clic */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú hamburguesa -->
+    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+    <!-- Barra de navegación -->
+    <div class="nav" id="nav">
+        <a href=""></a>
+        <a href=""></a>
+        <a href="index.html">Google Academic</a>
+        <a href="perfil.html">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="alertas.html">Alertas</a>
+        <a href="Estadisticas.html" class="active">Estadísticas</a>
+        <a href="busqueda.html">Búsqueda avanzada</a>
+        <a href="configuracion.html">Configuración</a>
+        <a href="guiaIA.html">Ayuda IA</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="stats-container">
+            <h1>Estadísticas</h1>
+            <div class="stat-item">
+                <span class="stat-title">Citas totales:</span> 120
+            </div>
+            <div class="stat-item">
+                <span class="stat-title">Artículos publicados:</span> 15
+            </div>
+            <div class="stat-item">
+                <span class="stat-title">Índice h:</span> 7
+            </div>
+            <div class="chart">
+                <!-- Aquí se puede integrar un gráfico (ej. con Chart.js) -->
+                <p style="text-align:center; padding-top: 100px;">Gráfico de citas a lo largo del tiempo (placeholder)</p>
+            </div>
+            <div class="no-data">
+                No hay datos disponibles.
+            </div>
+
+            <div class="section publications">
+                <h2>Publicaciones principales</h2>
+                <div class="item">1. Título de Publicación 1</div>
+                <div class="item">2. Título de Publicación 2</div>
+                <div class="item">3. Título de Publicación 3</div>
+                <div class="item">4. Título de Publicación 4</div>
+                <div class="item">5. Título de Publicación 5</div>
+                <div class="item">6. Título de Publicación 6</div>
+                <div class="item">7. Título de Publicación 7</div>
+                <div class="item">8. Título de Publicación 8</div>
+                <div class="item">9. Título de Publicación 9</div>
+                <div class="item">10. Título de Publicación 10</div>
+                <div class="item">11. Título de Publicación 11</div>
+                <div class="item">12. Título de Publicación 12</div>
+                <div class="item">13. Título de Publicación 13</div>
+                <div class="item">14. Título de Publicación 14</div>
+                <div class="item">15. Título de Publicación 15</div>
+                <div class="item">16. Título de Publicación 16</div>
+                <div class="item">17. Título de Publicación 17</div>
+                <div class="item">18. Título de Publicación 18</div>
+                <div class="item">19. Título de Publicación 19</div>
+                <div class="item">20. Título de Publicación 20</div>
+            </div>
+
+            <div class="section access-orders">
+                <h2>Órdenes de acceso público</h2>
+                <div class="item">1. Orden de Acceso 1</div>
+                <div class="item">2. Orden de Acceso 2</div>
+                <div class="item">3. Orden de Acceso 3</div>
+                <div class="item">4. Orden de Acceso 4</div>
+                <div class="item">5. Orden de Acceso 5</div>
+                <div class="item">6. Orden de Acceso 6</div>
+                <div class="item">7. Orden de Acceso 7</div>
+                <div class="item">8. Orden de Acceso 8</div>
+                <div class="item">9. Orden de Acceso 9</div>
+                <div class="item">10. Orden de Acceso 10</div>
+                <div class="item">11. Orden de Acceso 11</div>
+                <div class="item">12. Orden de Acceso 12</div>
+                <div class="item">13. Orden de Acceso 13</div>
+                <div class="item">14. Orden de Acceso 14</div>
+                <div class="item">15. Orden de Acceso 15</div>
+                <div class="item">16. Orden de Acceso 16</div>
+                <div class="item">17. Orden de Acceso 17</div>
+                <div class="item">18. Orden de Acceso 18</div>
+                <div class="item">19. Orden de Acceso 19</div>
+                <div class="item">20. Orden de Acceso 20</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Función para mostrar/ocultar la barra de navegación en móvil
+        function toggleNav() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Cierra la barra de navegación si el usuario hace clic fuera de ella
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>

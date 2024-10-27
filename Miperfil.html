@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil del usuario en Google Academic.">
+    <title>Mi Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Barra de navegación */
+        .nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .nav .active {
+            background-color: #4285f4;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .verification-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .verification-container img {
+            width: 100px; /* Tamaño del logo de Google Academic */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #4285f4;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .email {
+            font-size: 20px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .next-button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .next-button:hover {
+            background-color: #357ae8;
+        }
+
+        /* Estilo del botón hamburguesa */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .nav {
+                transform: translateX(-250px); /* Oculta la barra */
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block; /* Muestra el botón de 3 líneas en dispositivos móviles */
+            }
+
+            .nav.active {
+                transform: translateX(0); /* Muestra la barra al hacer clic */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú hamburguesa -->
+    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+    <!-- Barra de navegación -->
+    <div class="nav" id="nav">
+        <a href=""></a>
+        <a href=""></a>
+        <a href="index.html">Google Academic</a>
+        <a href="perfil.html" class="active">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="Alertas.html">Alertas</a>
+        <a href="Estadisticas.html">Estadísticas</a>
+        <a href="busqueda.html">Búsqueda avanzada</a>
+        <a href="configuracion.html">Configuración</a>
+        <a href="guiaIA.html">Ayuda IA</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="verification-container">
+            <h1>Google Academic</h1>
+            <h2>Verifica que eres tú</h2>
+            <div class="email">a.jose.huh@utponiente.edu.mx</div>
+            <div class="description">Para proteger esta cuenta, Google tiene que verificar que eres tú. Vuelve a iniciar sesión para ir a Citas de Google Académico.</div>
+            <button class="next-button">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar la barra de navegación en móvil
+        function toggleNav() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Cierra la barra de navegación si el usuario hace clic fuera de ella
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>

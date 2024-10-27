@@ -1,0 +1,358 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultados de búsqueda - Google Academic</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                display: flex;
+            }
+            
+            .nav {
+                width: 250px;
+                background-color: #333;
+                color: white;
+                padding-top: 20px;
+                position: fixed;
+                height: 100%;
+                transition: transform 0.3s ease;
+                z-index: 10;
+            }
+            
+            .nav a {
+                padding: 15px 25px;
+                text-decoration: none;
+                color: white;
+                display: block;
+                font-size: 18px;
+            }
+            
+            .nav a:hover {
+                background-color: #575757;
+            }
+            
+            .nav .active {
+                background-color: #4285f4;
+            }
+            
+            .main-content {
+                margin-left: 250px;
+                padding: 20px;
+                width: calc(100% - 250px);
+            }
+            
+            .top-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #f1f1f1;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 20px;
+            }
+            
+            .filter-group {
+                display: flex;
+                align-items: center;
+            }
+            
+            .filter-group span {
+                margin-right: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .filter-group select {
+                padding: 5px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            
+            .alert-button {
+                padding: 8px 12px;
+                background-color: #d9534f;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            
+            .alert-button:hover {
+                background-color: #c9302c;
+            }
+            
+            .logo {
+                font-size: 48px;
+                font-weight: bold;
+                color: #4285f4;
+                margin-bottom: 20px;
+            }
+            
+            .search-box {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .search-box input[type="text"] {
+                width: 500px;
+                padding: 10px;
+                font-size: 18px;
+                border: 1px solid #dcdcdc;
+                border-radius: 24px;
+                outline: none;
+            }
+            
+            .search-box button {
+                background-color: #4285f4;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 18px;
+                border-radius: 24px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            
+            .search-box button:hover {
+                background-color: #357ae8;
+            }
+            
+            .results-count {
+                text-align: center;
+                font-size: 14px;
+                color: #777;
+                margin-bottom: 20px;
+            }
+            
+            .search-results {
+                margin-top: 20px;
+            }
+            
+            .result-item {
+                border-bottom: 1px solid #ddd;
+                padding: 20px 0;
+            }
+            
+            .result-item h2 {
+                font-size: 20px;
+                margin: 0;
+                color: #1a0dab;
+            }
+            
+            .result-item h2 a {
+                color: #1a0dab;
+                text-decoration: none;
+            }
+            
+            .result-item h2 a:hover {
+                text-decoration: underline;
+            }
+            
+            .result-item .meta {
+                font-size: 14px;
+                color: #006621;
+                margin-top: 5px;
+            }
+            
+            .result-item p {
+                font-size: 16px;
+                color: #545454;
+                margin: 10px 0;
+            }
+            
+            .actions a {
+                font-size: 14px;
+                color: #1a0dab;
+                margin-right: 10px;
+                text-decoration: none;
+            }
+            
+            .actions a:hover {
+                text-decoration: underline;
+            }
+            
+            /* Estilos del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: left;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .modal-body {
+            margin-top: 10px;
+        }
+
+        .modal-close {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Estilos de citas */
+        .citation-style {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .citation-style span {
+            font-weight: bold;
+        }
+
+        /* Enlaces de citas */
+        .citation-links a {
+            margin-right: 10px;
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        .citation-links a:hover {
+            text-decoration: underline;
+        }
+            
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <a href=""></a>
+        <a href=""></a>
+        <a href="index.html">Google Academic</a>
+        <a href="Miperfil.html">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="Alertas.html">Alertas</a>
+        <a href="Estadisticas.html">Estadísticas</a>
+        <a href="busqueda.html">Búsqueda avanzada</a>
+        <a href="configuracion.html">Configuración</a>
+        <a href="guiaIA.html">Ayuda IA</a>
+        </div>
+    
+        <div class="main-content">
+            <header class="top-nav">
+                <div class="filter-group">
+                    <span>Cualquier momento:</span>
+                    <select>
+                        <option>Desde 2024</option>
+                        <option>Desde 2023</option>
+                        <option>Desde 2020</option>
+                        <option>Intervalo específico...</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span>Ordenar por:</span>
+                    <select>
+                        <option>Relevancia</option>
+                        <option>Fecha</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span>Idioma:</span>
+                    <select>
+                        <option>Cualquier idioma</option>
+                        <option>Buscar solo páginas en español</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span>Tipo:</span>
+                    <select>
+                        <option>Cualquier tipo</option>
+                        <option>Artículos de revisión</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span>Incluir:</span>
+                    <input type="checkbox"> Patentes
+                    <input type="checkbox" checked> Citas
+                </div>
+                <button class="alert-button">Crear alerta</button>
+            </header>
+    
+            <div class="search-container">
+                <div class="logo">Google Academic</div>
+                <div class="search-box">
+                    <input type="text" placeholder="Programación Lineal" value="Programación Lineal">
+                    <button>🔍</button>
+                </div>
+                <p class="results-count">Aproximadamente 348,000 resultados (0.09 s)</p>
+    
+                <div class="search-results">
+                    <div class="result-item">
+                        <h2><a href="#">Programación Lineal</a></h2>
+                        <p class="meta">P Lineal - Obtenido de https://definicion.de/programacion-lineal, 2022 - dm.uba.ar</p>
+                        <p>... Dispone de 100 m2 de madera, 60 m lineales de hierro y 50 horas-hombre por semana para el armado de las sillas y mesas...</p>
+                        <div class="actions"><a href="#">Guardar</a> | <a href="#" onclick="openModal()">Citar</a> | <a href="#">Citado por 3</a> | <a href="#">Artículos relacionados</a></div>
+                    </div>
+                    <!-- Otros resultados... -->
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="citationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Citar</h2>
+                    <span class="modal-close" onclick="closeModal()">×</span>
+                </div>
+                <div class="modal-body">
+                    <div class="citation-style"><span>APA:</span> Lineal, P. (2022). Programación Lineal. <i>Obtenido de</i> https://definicion.de/programacion-lineal.</div>
+                    <div class="citation-style"><span>ISO 690:</span> LINEAL, Programación. Programación Lineal. <i>Obtenido de</i> https://definicion.de/programacion-lineal, 2022.</div>
+                    <div class="citation-style"><span>MLA:</span> Lineal, Programación. "Programación Lineal." <i>Obtenido de</i> https://definicion.de/programacion-lineal (2022).</div>
+                    <div class="citation-links">
+                        <a href="#">BibTeX</a> | 
+                        <a href="#">EndNote</a> | 
+                        <a href="#">RefMan</a> | 
+                        <a href="#">RefWorks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            function openModal() {
+                document.getElementById("citationModal").style.display = "flex";
+            }
+    
+            function closeModal() {
+                document.getElementById("citationModal").style.display = "none";
+            }
+    
+            window.onclick = function(event) {
+                const modal = document.getElementById("citationModal");
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    </body>
+    </html>
+    
+

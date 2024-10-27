@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuración de Google Academic.">
+    <title>Configuración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Barra de navegación principal */
+        .nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .nav .active {
+            background-color: #4285f4;
+        }
+
+        /* Barra de navegación secundaria */
+        .secondary-nav {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            position: fixed; /* Fija la barra en la parte superior */
+            top: 0; /* La coloca en la parte superior */
+            left: 250px; /* Espacio para la barra lateral */
+            width: calc(100% - 250px); /* Ocupa el resto del ancho */
+            z-index: 9; /* Asegura que esté encima del contenido */
+        }
+
+        .secondary-nav a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .secondary-nav .active{
+            background-color: #4285f4;
+        }
+        /* Contenido principal */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 50px; /* Espacio para la barra secundaria */
+            padding: 20px;
+            width: calc(100% - 250px);
+            height: calc(100vh - 50px); /* Ajusta la altura para que no tape la barra secundaria */
+            overflow-y: auto;
+        }
+
+        .config-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4285f4;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #357ae8;
+        }
+
+        /* Estilo del botón hamburguesa */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .nav {
+                transform: translateX(-250px); /* Oculta la barra */
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block; /* Muestra el botón de 3 líneas en dispositivos móviles */
+            }
+
+            .nav.active {
+                transform: translateX(0); /* Muestra la barra al hacer clic */
+            }
+
+            .secondary-nav {
+                margin-left: 0; /* Alinear la barra secundaria en móviles */
+                width: 100%; /* Ocupa todo el ancho */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú hamburguesa -->
+    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+    <!-- Barra de navegación principal -->
+    <div class="nav" id="nav">
+        <a href=""></a>
+        <a href=""></a>
+        <a href="index.html">Google Academic</a>
+        <a href="Miperfil.html">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="alertas.html">Alertas</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="búsqueda-avanzada.html">Búsqueda avanzada</a>
+        <a href="configuracion.html" class="active">Configuración</a>
+        <a href="guiaIA.html">Ayuda IA</a>
+    </div>
+
+    <!-- Barra de navegación secundaria -->
+    <div class="secondary-nav">
+        <a href="#" class="active">Resultados de búsqueda</a>
+        <a href="#">Idiomas</a>
+        <a href="#">Enlaces de bibliotecas</a>
+        <a href="#">Cuenta</a>
+        <a href="#">Extensiones de navegador</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="config-container">
+            <h1>Configuración</h1>
+
+            <div class="form-group">
+                <label>Resultados de búsqueda:</label>
+                <select>
+                    <option value="10">10 resultados</option>
+                    <option value="20">20 resultados</option>
+                    <option value="50">50 resultados</option>
+                    <option value="100">100 resultados</option>
+                </select>
+                <p>La opción predeterminada de Google (10 resultados) ofrece los resultados con mayor rapidez.</p>
+            </div>
+
+            <div class="form-group">
+                <label>¿Dónde aparecen los resultados?</label>
+                <select>
+                    <option value="nueva_ventana">Abrir en una nueva ventana</option>
+                    <option value="misma_ventana">Abrir en la misma ventana</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Gestor de bibliografía:</label>
+                <select>
+                    <option value="no_mostrar">No mostrar enlaces para importar citas</option>
+                    <option value="mostrar_bibtex">Mostrar enlaces para importar citas a BibTeX</option>
+                    <option value="mostrar_endnote">Mostrar enlaces para importar citas a EndNote</option>
+                    <option value="mostrar_refman">Mostrar enlaces para importar citas a RefMan</option>
+                    <option value="mostrar_refworks">Mostrar enlaces para importar citas a RefWorks</option>
+                </select>
+            </div>
+
+            <button type="button">Guardar</button>
+            <button type="button">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar la barra de navegación en móvil
+        function toggleNav() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Cierra la barra de navegación si el usuario hace clic fuera de ella
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Academic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Barra de navegación */
+        .nav {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .nav .active {
+            background-color: #4285f4;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .search-container {
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box input[type="text"] {
+            width: 500px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #dcdcdc;
+            border-radius: 24px;
+            outline: none;
+        }
+
+        .search-box button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-box button:hover {
+            background-color: #357ae8;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #777;
+        }
+
+        /* Estilo del botón hamburguesa */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .nav {
+                transform: translateX(-250px); /* Oculta la barra */
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block; /* Muestra el botón de 3 líneas en dispositivos móviles */
+            }
+
+            .nav.active {
+                transform: translateX(0); /* Muestra la barra al hacer clic */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú hamburguesa -->
+    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+    <!-- Barra de navegación -->
+    <div class="nav" id="nav">
+        <a href=""></a>
+        <a href=""></a>
+        <a href="index.html" class="active">Google Academic</a>
+        <a href="Miperfil.html">Mi Perfil</a>
+        <a href="mi-biblioteca.html">Mi Biblioteca</a>
+        <a href="Alertas.html">Alertas</a>
+        <a href="Estadisticas.html">Estadísticas</a>
+        <a href="busqueda.html">Búsqueda avanzada</a>
+        <a href="configuracion.html">Configuración</a>
+        <a href="guiaIA.html">Ayuda IA</a>
+    </div>
+
+    <!-- Contenedor principal de la búsqueda -->
+    <div class="main-content" id="main-content">
+        <div class="search-container">
+            <div class="logo">Google Academic</div>
+            <form action="resultados.html" method="get" class="search-box" >
+                <input type="text" placeholder="Buscar artículos académicos...">
+                <button type="submit">Buscar</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar la barra de navegación en móvil
+        function toggleNav() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Cierra la barra de navegación si el usuario hace clic fuera de ella
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
